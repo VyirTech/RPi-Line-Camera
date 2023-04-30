@@ -36,7 +36,7 @@ def fit_gaussian(data):
     x = np.arange(len(data))
     mean = np.sum(x * data) / np.sum(data)
     sigma = np.sqrt(np.sum(data * (x - mean) ** 2) / np.sum(data))
-    popt, _ = curve_fit(gaussian, x, data, p0=[np.max(data), mean, sigma])
+    popt, _ = curve_fit(gaussian, x, data, p0=[np.max(data), mean, sigma], maxfev=100000)
     return popt
 
 # Calculate and return the full width at half maximum (FWHM) for
